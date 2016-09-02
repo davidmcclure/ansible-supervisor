@@ -1,0 +1,24 @@
+---
+
+- name: Install Supervisor
+  apt:
+    pkg: supervisor
+    update_cache: yes
+    state: latest
+
+- name: Reset Supervisor configs
+  when: supervisor_reset_programs
+  shell: rm /etc/supervisor/conf.d/*.conf
+  ignore_errors: yes
+
+- name: Push the program configs
+  template:
+    src: program.conf.j2
+    dest: /etc/supervisor/conf.d/{{ item.name }}.conf
+  with_items: supervisor_programs
+
+- name: Reload programs
+  command: supervisorctl reload
+
+- name: Wait for Supervisor
+  pause: seconds=3
