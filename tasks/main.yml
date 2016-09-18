@@ -15,7 +15,7 @@
   template:
     src: program.conf.j2
     dest: /etc/supervisor/conf.d/{{ item.name }}.conf
-  with_items: supervisor_programs
+  with_items: '{{ supervisor_programs }}'
 
 - name: Reload programs
   command: supervisorctl reload
