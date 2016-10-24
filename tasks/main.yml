@@ -20,8 +20,8 @@
     dest: /etc/supervisor/conf.d/{{ item.name }}.conf
   with_items: '{{ supervisor_programs }}'
 
-- name: Restart Supervisor
-  service:
-    name: supervisor
-    state: restarted
-    sleep: 3
+- name: Trigger Supervisor restart
+  changed_when: true
+  notify: restart supervisor
+  debug:
+    msg: Supervisor restart

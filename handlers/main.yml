@@ -3,3 +3,9 @@
 - name: reload supervisor
   become: yes
   command: supervisorctl reload
+
+- name: restart supervisor
+  service:
+    name: supervisor
+    state: restarted
+    sleep: 3
