@@ -1,8 +1,8 @@
 ---
 
-supervisor_reset_programs: false
-
 supervisor_programs: []
+
+supervisor_reset_programs: true
 
 supervisor_config:
   autostart: false
