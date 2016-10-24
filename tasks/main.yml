@@ -1,22 +1,17 @@
 ---
 
-# TODO: Don't sudo?
-
 - name: Install Supervisor
-  become: yes
   apt:
     pkg: supervisor
     update_cache: yes
     state: latest
 
 - name: Reset Supervisor configs
-  become: yes
   when: supervisor_reset_programs
   shell: rm /etc/supervisor/conf.d/*.conf
   ignore_errors: yes
 
 - name: Push the program configs
-  become: yes
   template:
     src: program.conf.j2
     dest: /etc/supervisor/conf.d/{{ item.name }}.conf
