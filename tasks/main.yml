@@ -24,8 +24,8 @@
     sleep: 3
 
 # Always restart at end, after downstream roles have populated code.
-- name: Trigger Supervisor restart
-  changed_when: true
-  notify: restart supervisor
-  debug:
-    msg: Supervisor restart
+#- name: Trigger Supervisor restart
+  #changed_when: true
+  #notify: restart supervisor
+  #debug:
+    #msg: Supervisor restart
