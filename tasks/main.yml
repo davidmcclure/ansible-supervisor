@@ -17,11 +17,11 @@
     dest: /etc/supervisor/conf.d/{{ item.name }}.conf
   with_items: '{{ supervisor_programs }}'
 
-- name: Restart Supervisor
-  service:
-    name: supervisor
-    state: restarted
-    sleep: 3
+#- name: Restart Supervisor
+  #service:
+    #name: supervisor
+    #state: restarted
+    #sleep: 3
 
 # Always restart at end, after downstream roles have populated code.
 - name: Trigger Supervisor restart
